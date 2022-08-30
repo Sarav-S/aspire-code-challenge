@@ -28,7 +28,7 @@ class LoanController extends Controller
             DB::commit();
 
             return response()->json(
-                ['message' => 'Loan submitted successfully for review'],
+                ['message' => 'Loan submitted successfully for admin review'],
                 201
             );
         } catch (\Exception $e) {

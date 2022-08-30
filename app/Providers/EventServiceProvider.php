@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Loan;
+use App\Models\Term;
 use App\Observers\LoanObserver;
+use App\Observers\TermObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -30,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Loan::observe(LoanObserver::class);
+        Term::observe(TermObserver::class);
     }
 
     /**
