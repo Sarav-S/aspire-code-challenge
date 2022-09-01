@@ -69,6 +69,10 @@ I've created 3 jobs,
 - `LoanRejected` - Triggered when admin rejects the loan. Can fire either SMS or Email.
 - `LoanClosed` - Triggered when customer pays all the term dues.
 
+## Code Coverage
+
+I've ensured all of my code is properly tested with testcases. You can find the code coverage of my application under the `html` folder
+
 ## Unhandled Cases
 
 I've not handled the following scenarios for this lite version
