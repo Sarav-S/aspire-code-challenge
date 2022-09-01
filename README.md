@@ -81,6 +81,7 @@ I've ensured all of my code is properly tested with testcases. You can find the 
 
 I've not handled the following scenarios for this lite version
 
-- Recalculating the remaining term amount when customer pays extra term amount on a particular term
+- Recalculating the remaining term amount when customer pays extra amount on a particular term
 - Ability to pay all the loan amount in a single term 
 - Date validation for the terms ie, as of now customer can pay all the terms on a single day
+- Customers can pay terms on any order ie, pay 3rd term and then 2nd and 1st.
