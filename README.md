@@ -37,8 +37,8 @@ Logical conditions
 ```mermaid
 sequenceDiagram
 Customer ->> Loan: Creates loan with amount and term (assuming 3)
-Loan-->>Term: Loan terms is split based on user input
 Admin->>Loan: Approves the Loan
+Loan-->>Term: Loan terms is split based on user input
 Note right of Loan: Loan Approved Event fired
 Customer ->> Loan: Fetches own loans approved by admin
 Customer ->> Term: Pays for term 1
