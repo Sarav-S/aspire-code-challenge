@@ -33,6 +33,6 @@ class AuthController extends Controller
         }
 
         return response()
-            ->json(['message' => 'Incorrect username/password'], 400);
+            ->json(['message' => 'Incorrect email or password'], 400);
     }
 }

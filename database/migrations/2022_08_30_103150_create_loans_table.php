@@ -19,12 +19,12 @@ return new class extends Migration
             $table->float('amount', 8, 2);
             $table->tinyInteger('term');
 
-            $table->boolean('is_approved')->default(false);
+            $table->tinyInteger('is_approved')->default(0);
             $table->dateTime('is_approved_on')->nullable();
             $table->foreignId('is_approved_by')
                 ->nullable()
                 ->references('id')
-                ->on('users');
+                ->on('admins');
 
             $table->string('status', 10)->default('PENDING');
             $table->dateTime('settled_on')->nullable();

@@ -2,45 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use App\Models\Loan;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\LoanRequest;
+use App\Models\Loan;
+use DB;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
 
-    public function index() : JsonResponse
+    public function index(): JsonResponse
     {
         $loans = Loan::forIndividual(auth()->id());
         return response()->json(['data' => $loans]);
     }
 
-    public function store(LoanRequest $request) : JsonResponse
+    public function store(LoanRequest $request): JsonResponse
     {
         $data = $request->validated();
         $user = $request->user();
 
-        DB::beginTransaction();
-        try {
-            $user->loan()->create($data);
-            DB::commit();
-
-            return response()->json(
-                ['message' => 'Loan submitted successfully for admin review'],
-                201
-            );
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json(
-                ['message' => $e->getMessage()],
-                400
-            );
-        }
+        $user->loans()->create($data);
+        return response()->json(
+            ['message' => 'Loan submitted successfully for admin review'],
+            201
+        );
     }
 
-    public function show(Request $request, $id) : JsonResponse
+    public function show(Request $request, $id): JsonResponse
     {
         $loan = Loan::withTerm($id, auth()->id());
         if (!$loan) {

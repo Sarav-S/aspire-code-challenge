@@ -5,6 +5,7 @@ namespace App\Observers;
 use Carbon\Carbon;
 use App\Models\Loan;
 use App\Models\Term;
+use App\Jobs\LoanClosed;
 
 class TermObserver
 {
@@ -23,6 +24,8 @@ class TermObserver
             $loan->status = 'PAID';
             $loan->settled_on = Carbon::now();
             $loan->save();
+
+            LoanClosed::dispatch($loan);
         }
     }
 }

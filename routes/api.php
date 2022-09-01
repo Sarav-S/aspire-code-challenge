@@ -9,7 +9,6 @@ use App\Http\Controllers\LoanController;
 use App\Http\Controllers\TermController;
 
 Route::post('login', [AuthController::class, 'login']);
-
 Route::group(
     ['middleware' => 'auth:sanctum'],
     function () {

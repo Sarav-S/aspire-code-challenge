@@ -14,26 +14,28 @@ class LoanObserver
      * @param  \App\Models\Loan  $loan
      * @return void
      */
-    public function created(Loan $loan)
+    public function updated(Loan $loan)
     {
-        $amount = $loan->amount;
-        $term = $loan->term;
+        if ($loan->is_approved === 1) {
+            $amount = $loan->amount;
+            $term = $loan->term;
 
-        $perTerm = $amount / $term;
+            $perTerm = $amount / $term;
 
-        $data = [];
-        for ($i = 1; $i <= $term; $i++) {
-            array_push(
-                $data,
-                new Term(
-                    [
-                        'amount' => $perTerm,
-                        'scheduled_date' => Carbon::parse($loan->created_at)->addDays($i * 7)
-                    ]
-                )
-            );
+            $data = [];
+            for ($i = 1; $i <= $term; $i++) {
+                array_push(
+                    $data,
+                    new Term(
+                        [
+                            'amount' => $perTerm,
+                            'scheduled_date' => Carbon::parse($loan->created_at)->addDays($i * 7)
+                        ]
+                    )
+                );
+            }
+
+            $loan->terms()->saveMany($data);
         }
-
-        $loan->term()->saveMany($data);
     }
 }

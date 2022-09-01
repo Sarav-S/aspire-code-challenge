@@ -24,7 +24,7 @@ class LoanStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|numeric|in:1,0'
+            'status' => 'required|numeric|in:1,-1'
         ];
     }
 }
