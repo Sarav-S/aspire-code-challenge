@@ -38,8 +38,8 @@ Logical conditions
 sequenceDiagram
 Customer ->> Loan: Creates loan with amount and term (assuming 3)
 Admin->>Loan: Approves the Loan
-Loan-->>Term: Loan terms is split based on user input
 Note right of Loan: Loan Approved Event fired
+Loan-->>Term: Loan terms is split based on user input
 Customer ->> Loan: Fetches own loans approved by admin
 Customer ->> Term: Pays for term 1
 Customer ->> Term: Pays for term 2
