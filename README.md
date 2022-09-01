@@ -17,11 +17,15 @@ Next, install the composer packages
 
 `composer install`
 
-and then run the migration along with seeders
+Apart from above, no more additional configuration is required. Simply copy the contents of `.env.example`  to `.env` and modify the database connection string. Run the migration and seeders then you're good to go.
 
 `php artisan migrate && php artisan db:seed`
 
-Apart from above, no more additional configuration is required. Simply copy the contents of `.env.example`  to `.env` and modify the database connection string. Once that is done,  you're good to go.
+and finally,
+
+`php artisan serve`
+
+to start the application
 
 # Basic Flow
 
