@@ -50,7 +50,7 @@ end
 Note right of Term: Update Loan to PAID if all term is settled!
 Term-->>Loan: All terms settled. Settle Loan.
 Note left of Loan: Loan Closed Event fired
-
+Loan->>Customer: Notify customer
 ```
 
 ## Postman Collection
